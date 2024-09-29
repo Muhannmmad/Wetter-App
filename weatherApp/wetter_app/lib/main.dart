@@ -22,12 +22,33 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text(
-          'Welcome to the weather app!',
-          style: TextStyle(
-            color: Colors.blue,
-            fontSize: 24,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'City: Tübingen',
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 24,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Temperature: 18°C',
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 24,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              'Weather: Rains',
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 24,
+              ),
+            ),
+          ],
         ),
       ),
     );
