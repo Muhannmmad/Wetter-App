@@ -1,52 +1,93 @@
 import 'package:flutter/material.dart';
 
+class WeatherData {
+  final String city;
+  final double temperature;
+  final String weatherCondition;
+
+  WeatherData({
+    required this.city,
+    required this.temperature,
+    required this.weatherCondition,
+  });
+}
+
 void main() {
-  runApp(const MainApp());
+  // Create an example WeatherData object
+  WeatherData exampleWeather = WeatherData(
+    city: 'Tübingen',
+    temperature: 18,
+    weatherCondition: 'Rains',
+  );
+
+  runApp(MainApp(weatherData: exampleWeather));
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final WeatherData weatherData;
+
+  const MainApp({super.key, required this.weatherData});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: WeatherApp(),
+    return MaterialApp(
+      home: WeatherApp(weatherData: weatherData),
     );
   }
 }
 
 class WeatherApp extends StatelessWidget {
-  const WeatherApp({super.key});
+  final WeatherData weatherData;
+  const WeatherApp({super.key, required this.weatherData});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Weather App',
+          style: TextStyle(
+            fontSize: 28,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.blue,
+        centerTitle: true,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // Display city from WeatherData
             Text(
-              'City: Tübingen',
-              style: TextStyle(
+              'City: ${weatherData.city}',
+              style: const TextStyle(
                 color: Colors.blue,
-                fontSize: 24,
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
+            // Display temperature from WeatherData
             Text(
-              'Temperature: 18°C',
-              style: TextStyle(
+              'Temperature: ${weatherData.temperature}°C',
+              style: const TextStyle(
                 color: Colors.blue,
                 fontSize: 24,
               ),
+              textAlign: TextAlign.center,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
+            // Display weather condition from WeatherData
             Text(
-              'Weather: Rains',
-              style: TextStyle(
+              'Weather: ${weatherData.weatherCondition}',
+              style: const TextStyle(
                 color: Colors.blue,
                 fontSize: 24,
               ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
