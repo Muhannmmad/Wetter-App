@@ -20,6 +20,16 @@ class WeatherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Scaffold(
+      body: Center(
+        child: Text(
+          'Welcome to the weather app!',
+          style: TextStyle(
+            color: Colors.blue,
+            fontSize: 24,
+          ),
+        ),
+      ),
+    );
   }
 }
