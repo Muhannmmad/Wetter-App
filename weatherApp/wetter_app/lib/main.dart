@@ -1,47 +1,37 @@
 import 'package:flutter/material.dart';
-
-class WeatherData {
-  final String city;
-  final double temperature;
-  final String weatherCondition;
-
-  WeatherData({
-    required this.city,
-    required this.temperature,
-    required this.weatherCondition,
-  });
-}
+import 'weather_repository.dart';
+import 'weather_data.dart';
 
 void main() {
-  // Create an example WeatherData object
-  WeatherData exampleWeather = WeatherData(
-    city: 'Tübingen',
-    temperature: 18,
-    weatherCondition: 'Rains',
-  );
+  // Create an object of WeatherRepository
+  WeatherRepository weatherRepository = WeatherRepository();
 
-  runApp(MainApp(weatherData: exampleWeather));
+  runApp(MainApp(weatherRepository: weatherRepository));
 }
 
 class MainApp extends StatelessWidget {
-  final WeatherData weatherData;
+  final WeatherRepository weatherRepository;
 
-  const MainApp({super.key, required this.weatherData});
+  // Constructor to accept WeatherRepository
+  const MainApp({super.key, required this.weatherRepository});
 
   @override
   Widget build(BuildContext context) {
+    // Pass the weatherRepository to the WeatherApp widget
     return MaterialApp(
-      home: WeatherApp(weatherData: weatherData),
+      home: WeatherApp(weatherRepository: weatherRepository),
     );
   }
 }
 
 class WeatherApp extends StatelessWidget {
-  final WeatherData weatherData;
-  const WeatherApp({super.key, required this.weatherData});
+  final WeatherRepository weatherRepository;
+  const WeatherApp({super.key, required this.weatherRepository});
 
   @override
   Widget build(BuildContext context) {
+    WeatherData weatherData = weatherRepository.getWeather();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -59,7 +49,6 @@ class WeatherApp extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Display city from WeatherData
             Text(
               'City: ${weatherData.city}',
               style: const TextStyle(
@@ -70,7 +59,6 @@ class WeatherApp extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
-            // Display temperature from WeatherData
             Text(
               'Temperature: ${weatherData.temperature}°C',
               style: const TextStyle(
@@ -80,7 +68,6 @@ class WeatherApp extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
-            // Display weather condition from WeatherData
             Text(
               'Weather: ${weatherData.weatherCondition}',
               style: const TextStyle(
