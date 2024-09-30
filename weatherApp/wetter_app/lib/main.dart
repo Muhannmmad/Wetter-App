@@ -39,7 +39,7 @@ class WeatherApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: const Color.fromARGB(255, 21, 3, 101),
         centerTitle: true,
       ),
       body: Center(
@@ -49,7 +49,7 @@ class WeatherApp extends StatelessWidget {
             Text(
               'City: ${weatherData.city}',
               style: const TextStyle(
-                color: Colors.blue,
+                color: Color.fromARGB(255, 22, 1, 113),
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
               ),
@@ -59,7 +59,7 @@ class WeatherApp extends StatelessWidget {
             Text(
               'Temperature: ${weatherData.temperature}°C',
               style: const TextStyle(
-                color: Colors.blue,
+                color: Color.fromARGB(255, 17, 1, 132),
                 fontSize: 24,
               ),
               textAlign: TextAlign.center,
@@ -68,7 +68,7 @@ class WeatherApp extends StatelessWidget {
             Text(
               'Weather: ${weatherData.weatherCondition}',
               style: const TextStyle(
-                color: Colors.blue,
+                color: Color.fromARGB(255, 37, 6, 212),
                 fontSize: 24,
               ),
               textAlign: TextAlign.center,
